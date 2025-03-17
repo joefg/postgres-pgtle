@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  database:
+    image: postgres-pgtle:latest
+    ports:
+      - 127.0.0.1:5430:5432
+    environment:
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/pgdata/data
+    command: -c shared_preload_libraries=pg_tle
+    volumes:
+     - ./activate-pg_tle.sql:/docker-entrypoint-initdb.d/activate-pg_tle.sql
+     - ./install.sh:/docker-entrypoint-initdb.d/install.sh
+     - ./extension:/extension
