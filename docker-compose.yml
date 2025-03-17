@@ -5,7 +5,7 @@ services:
     ports:
       - 127.0.0.1:5430:5432
     environment:
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - PGDATA=/var/pgdata/data
     command: -c shared_preload_libraries=pg_tle
     volumes:
